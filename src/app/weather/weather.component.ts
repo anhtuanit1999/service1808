@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WeatherService } from './weather.service';
+import { WeatherService } from './weather.serrvice';
 
 @Component({
   selector: 'app-weather',
@@ -9,29 +9,27 @@ import { WeatherService } from './weather.service';
 })
 export class WeatherComponent {
   txtCityName = '';
-  cityName = '';
-  temp = '';
-  constructor(private weatherSerice: WeatherService) {
-    weatherSerice.addWord()
-    .then(res => console.log(res));
-  }
+  txtMessage = '';
+  constructor(private weatherService: WeatherService) {}
 
   async onGetWeather() {
     try {
-      const temp = await this.weatherSerice.getWeather(this.txtCityName);
-      this.temp = temp;
-      this.cityName = this.txtCityName;
+      const temp = await this.weatherService.getWeather(this.txtCityName)
+      this.txtMessage = `${this.txtCityName} is now ${temp}C`;
       this.txtCityName = '';
-    } catch (err) {
-      const errJSON = await (<Response>err).json();
-      alert(errJSON.message);
+    } catch (error) {
+      this.txtMessage = 'City name invalid!';
+      this.txtCityName = '';
     }
   }
 
   get message() {
-    if (this.cityName === '') return 'Enter your city name';
-    return `${this.cityName} is now ${this.temp}C`;
+    if (this.txtMessage === '') {
+      return 'Enter your city name';
+    }
+    return this.txtMessage;
   }
-}
 
+
+}
 // http://api.openweathermap.org/data/2.5/weather?appid=01cc37655736835b0b75f2b395737694&units=metric&q=

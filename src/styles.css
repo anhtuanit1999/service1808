@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+div {
+    padding: 1rem;
+    margin: 2rem 2rem 2rem 2rem;
+    width: 50rem;
+}
