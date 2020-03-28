@@ -12,4 +12,12 @@ export class WeatherService {
         .then(res => res.json())
         .then(resJSON => resJSON.main.temp);
     }
+
+    getName(): Promise<string> {
+        const url = 'http://localhost:3000';
+        return this.http.get(url)
+        .toPromise()
+        .then(res => res.json())
+        .then(resJSON => resJSON.name);
+    }
 }

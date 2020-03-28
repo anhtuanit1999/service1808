@@ -10,7 +10,11 @@ import { WeatherService } from './weather.serrvice';
 export class WeatherComponent {
   txtCityName = '';
   txtMessage = '';
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService) {
+    weatherService.getName()
+    .then(name => console.log(name))
+    .catch(err => console.log('err'));
+  }
 
   async onGetWeather() {
     try {
