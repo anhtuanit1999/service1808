@@ -1,0 +1,26 @@
+<style>
+  .word {
+    display: flex;
+    flex-direction: column;
+    background-color: #EFEEF6;
+    padding: 10px;
+    margin: 10px 0px 0px 0px;
+    border-radius: 5px;
+  }
+
+  .container {
+    width: 250px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin-top: 5px;
+  }
+</style>
+<div class="container">
+  <app-rx-form *ngIf="isShowForm | async"></app-rx-form>
+  <button class="btn btn-primary" *ngIf="!(isShowForm | async)" (click)="showForm()">Show form</button>
+  <br><br>
+  <app-rx-word *ngFor="let word of words | async" [en]="word.en" [vn]="word.vn"  [_id]="word._id"></app-rx-word>
+</div>

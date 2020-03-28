@@ -1,0 +1,9 @@
+<div style="width: 300px; padding: 10px; text-align: center">
+  <h3>{{ message }}</h3>
+  <br>
+  <input type="text" placeholder="Enter your city name" class="form-control" [(ngModel)]="txtCityName">
+  <br>
+  <button class="btn btn-success" (click)="onGetWeather();">
+    Get Weather
+  </button>
+</div>

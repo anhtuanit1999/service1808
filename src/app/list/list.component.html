@@ -1,0 +1,34 @@
+<style>
+  .word {
+    display: flex;
+    flex-direction: column;
+    background-color: #EFEEF6;
+    padding: 10px;
+    margin: 10px 0px 0px 0px;
+    border-radius: 5px;
+  }
+
+  .container {
+    width: 250px;
+    margin-left: 10px;
+  }
+
+  h3 {
+    margin-top: 5px;
+  }
+</style>
+<div class="container">
+  <input placeholder="English" [(ngModel)]="txtEn" class="form-control">
+  <br>
+  <input placeholder="Vietnamese" [(ngModel)]="txtVn" class="form-control">
+  <br>
+  <button class="btn btn-success" style="width: 220px" (click)="add();">
+    Add new word
+  </button>
+  <br><br>
+  <div *ngFor="let word of words" class="word">
+      <h3>{{ word.en }}</h3>
+      <p>{{ word.vn }}</p>
+      <button (click)="remove(word._id)" class="btn btn-danger">Remove</button>
+  </div>
+</div>
