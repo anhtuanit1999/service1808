@@ -11,6 +11,8 @@ export class AppComponent {
   title = 'app';
   ip: string;
   constructor(private ipService: IpService) {
-    this.ip = this.ipService.getIp();
+    this.ipService.getIp()
+    .then(ip => this.ip = ip)
+    .catch(err => console.log(err.message));
   }
 }
