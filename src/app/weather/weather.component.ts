@@ -18,8 +18,9 @@ export class WeatherComponent {
       this.txtMessage = `${this.txtCityName} is now ${temp}C`;
       this.txtCityName = '';
     } catch (error) {
-      this.txtMessage = 'City name invalid!';
+      const errJSON =  await (<Response>error).json();
       this.txtCityName = '';
+      alert(errJSON.message);
     }
   }
 
